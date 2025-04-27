@@ -168,7 +168,7 @@ group by
 order by
     l_returnflag,
     l_linestatus;</programlisting>
-<simpara>output from previous code block</simpara>
+<simpara>&lt;output from previous code block&gt;</simpara>
 <programlisting language="sql" linenumbering="unnumbered">-- Now let's run the same query but with OOPS substitution set to ON
 set OOPS.auto_substitute_projections TO on;
 
@@ -193,7 +193,7 @@ group by
 order by
     l_returnflag,
     l_linestatus;</programlisting>
-<simpara>output from previous code block</simpara>
+<simpara>&lt;output from previous code block&gt;</simpara>
 <style>
 .output {
   background-color: lightgrey;
