@@ -13,8 +13,8 @@
 </author>
 <authorinitials>AB</authorinitials>
 </info>
-<simpara>The <phrase role="commercial">OOPS</phrase> provides some functions that simplify the creation and use of projections.</simpara>
-<simpara>In the future it may be added to the <phrase role="commercial">SQL</phrase> grammar, so that it is possible to write:</simpara>
+<simpara>The <phrase role="productname">OOPS</phrase> provides some functions that simplify the creation and use of projections.</simpara>
+<simpara>In the future it may be added to the <phrase role="productname">SQL</phrase> grammar, so that it is possible to write:</simpara>
 <programlisting language="sql" linenumbering="unnumbered">CREATE PROJECTION xxx OF TABLE yyy(column1, column2, ...) GROUP BY (column1, column2, ...)</programlisting>
 <simpara>But for now it can be done using function:</simpara>
 <simpara><?asciidoc-hr?></simpara>
@@ -88,13 +88,13 @@
 The presence of such a column in the projection allows the projection to be updated incrementally.
 The generated <literal>PNAME_refresh()</literal> method calls the <literal>populate()</literal> method, selecting only rows from the original table where the <literal>order_by</literal> column value is greater than the maximum value of that column in the projection.
 It assumes that <literal>order_by</literal> is unique or at least that the refresh is done at the moment when there is a gap in the collected events.</simpara>
-<simpara>Like materialized views, <phrase role="commercial">OOPS</phrase> projections are not updated automatically.
+<simpara>Like materialized views, <phrase role="productname">OOPS</phrase> projections are not updated automatically.
 It is the programmer&#8217;s responsibility to update them periodically.
 The most convenient way is to use the generated <literal>PNAME_refresh()</literal> function.
 If the <literal><xref linkend="create_projection:order_by"/></literal> attribute is specified, this function will import only the new data (not present in the projection) from the original table.</simpara>
-<simpara>The main advantage of <phrase role="commercial">OOPS</phrase> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
+<simpara>The main advantage of <phrase role="productname">OOPS</phrase> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
 There is a configuration parameter <literal>OOPS.auto_substitute_projections</literal> that allows to enable such substitution.
-By default it is disabled, because <phrase role="commercial">OOPS</phrase> projections may not be synchronized with the original table and a query on a projection may return different result.</simpara>
+By default it is disabled, because <phrase role="productname">OOPS</phrase> projections may not be synchronized with the original table and a query on a projection may return different result.</simpara>
 <simpara>Currently, projections can only be substituted automatically if:</simpara>
 <orderedlist numeration="arabic">
 <listitem>
@@ -199,7 +199,7 @@ order by
   background-color: lightgrey;
   font-family: "Noto Sans Mono", monospace;
 }
-.commercial {
+.productname {
   font-weight: bold;
 }
 </style>

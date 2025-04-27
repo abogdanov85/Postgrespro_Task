@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>OOPS projections and automatic table substitution</title>
+<date>2025-04-27</date>
+<author>
+<personname>
+<firstname>Alexey</firstname>
+<surname>Bogdanov</surname>
+</personname>
+</author>
+<authorinitials>AB</authorinitials>
+</info>
+<simpara>The <phrase role="commercial">OOPS</phrase> provides some functions that simplify the creation and use of projections.</simpara>
+<simpara>To use OOPS, you can execute this code:</simpara>
+<programlisting language="sql" linenumbering="unnumbered">CREATE PROJECTION xxx OF TABLE yyy(column1, column2, ...) GROUP BY (column1, column2, ...)</programlisting>
+<simpara>The main advantage of <phrase role="commercial">OOPS</phrase> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
+There is a configuration parameter <literal>OOPS.auto_substitute_projections</literal> that allows to enable such substitution.
+By default it is disabled, because <phrase role="commercial">OOPS</phrase> projections may not be synchronized with the original table and a query on a projection may return different result.</simpara>
+<style>
+.output {
+  background-color: lightgrey;
+  font-family: "Noto Sans Mono", monospace;
+}
+.commercial {
+  font-weight: bold;
+}
+</style>
+</article>

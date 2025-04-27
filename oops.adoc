@@ -2,6 +2,7 @@
 Alexey Bogdanov
 :keywords: OOPS, projection, vector
 :lang: en
+// Версию лучше задавать на уровне проекта, задаю здесь для демонстрации
 :version: 1
 :source-highlighter: highlight.js
 :highlightjs-theme: paraiso-light
@@ -11,14 +12,14 @@ Alexey Bogdanov
 // например в сниппетах в результатах поиска
 // tag::short-description[]
 // Здесь хорошо бы дать расшифровку аббревиатуры OOPS в скобках, но мне не удалось ее найти
-The [.commercial]#OOPS# provides some functions that simplify the creation and use of projections.
+The [.productname]#OOPS# provides some functions that simplify the creation and use of projections.
 // end::short-description[]
 
 // Предположим, что описанный функционал появится начиная с версии 2
 // В таком случае данный фрагмент показываем только, если версия меньше 2
 ifeval::[{version} < 2]
 
-In the future it may be added to the [.commercial]#SQL# grammar, so that it is possible to write:
+In the future it may be added to the [.productname]#SQL# grammar, so that it is possible to write:
 
 endif::[]
 
@@ -50,7 +51,7 @@ The presence of such a column in the projection allows the projection to be upda
 The generated `+PNAME_refresh()+` method calls the `+populate()+` method, selecting only rows from the original table where the `+order_by+` column value is greater than the maximum value of that column in the projection.
 It assumes that `+order_by+` is unique or at least that the refresh is done at the moment when there is a gap in the collected events.
 
-Like materialized views, [.commercial]#OOPS# projections are not updated automatically.
+Like materialized views, [.productname]#OOPS# projections are not updated automatically.
 It is the programmer's responsibility to update them periodically. 
 The most convenient way is to use the generated `+PNAME_refresh()+` function.
 If the `<<create_projection:order_by>>` attribute is specified, this function will import only the new data (not present in the projection) from the original table.
@@ -59,11 +60,11 @@ endif::[]
 
 // Общая часть для всех версий
 
-The main advantage of [.commercial]#OOPS# projection mechanism is that it allows to automatically substitute queries on original tables with projections.
+The main advantage of [.productname]#OOPS# projection mechanism is that it allows to automatically substitute queries on original tables with projections.
 // Здесь нужна будет ссылка на описание параметра OOPS.auto_substitute_projections
 There is a configuration parameter `+OOPS.auto_substitute_projections+` that allows to enable such substitution.
 // Здесь я исправил projects на projections, но не уверен на 100%, что это правильно (не хватает данных)
-By default it is disabled, because [.commercial]#OOPS# projections may not be synchronized with the original table and a query on a projection may return different result.
+By default it is disabled, because [.productname]#OOPS# projections may not be synchronized with the original table and a query on a projection may return different result.
 
 // Этот фрагмент тоже показываем только, если версия меньше 2
 ifeval::[{version} < 2]
@@ -187,14 +188,14 @@ output from previous code block
 endif::[]
 
 // Делаю прямо тут кастомный css для блоков вывода, чтобы просто показать идею разных литеральных блоков (для ввода и вывода)
-// И здесь же выделяю жирным фрагменты commercial
+// И здесь же выделяю жирным фрагменты productname
 ++++
 <style>
 .output {
   background-color: lightgrey;
   font-family: "Noto Sans Mono", monospace;
 }
-.commercial {
+.productname {
   font-weight: bold;
 }
 </style>

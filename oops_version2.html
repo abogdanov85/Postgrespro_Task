@@ -446,10 +446,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="paragraph">
-<p>The <span class="productname">OOPS</span> provides some functions that simplify the creation and use of projections.</p>
+<p>The <span class="commercial">OOPS</span> provides some functions that simplify the creation and use of projections.</p>
 </div>
 <div class="paragraph">
-<p>In the future it may be added to the <span class="productname">SQL</span> grammar, so that it is possible to write:</p>
+<p>To use OOPS, you can execute this code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -457,246 +457,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>But for now it can be done using function:</p>
-</div>
-<hr>
-<div id="create_projection" class="openblock docstring">
-<div class="content">
-<div class="paragraph">
-<p><a href="#create_projection">#</a>
-<strong><code>create_projection</code></strong> — <em>Function</em></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create_projection(
-    projection_name text,
-    source_table regclass,
-    vector_columns text[],
-    scalar_columns text[] default null,
-    order_by text default null)</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Creates a projection of the given table.</p>
-</div>
-<h3 id="_parameters" class="discrete">Parameters</h3>
-<div id="create_projection:projection_name" class="dlist">
-<dl>
-<dt class="hdlist1"><code>projection_name</code> <code>::text</code> </dt>
-<dd>
-<p>Name of the projection (<code>PNAME</code>)</p>
-</dd>
-</dl>
-</div>
-<div id="create_projection:source_table" class="dlist">
-<dl>
-<dt class="hdlist1"><code>source_table</code> <code>::regclass</code> </dt>
-<dd>
-<p>Existing <span class="commercial">Postgres</span> table to be substituted by projection</p>
-</dd>
-</dl>
-</div>
-<div id="create_projection:vector_columns" class="dlist">
-<dl>
-<dt class="hdlist1"><code>vector_columns</code> <code>::text[]</code> </dt>
-<dd>
-<p>Array of column names which should be stores as <span class="commercial">OOPS</span> tiles</p>
-</dd>
-</dl>
-</div>
-<div id="create_projection:scalar_columns" class="dlist">
-<dl>
-<dt class="hdlist1"><code>scalar_columns</code> <code>::text[]</code> </dt>
-<dd>
-<p>Array of grouping columns the type of which is preserved</p>
-</dd>
-</dl>
-</div>
-<div id="create_projection:order_by" class="dlist">
-<dl>
-<dt class="hdlist1"><code>order_by</code> <code>::text</code> optional</dt>
-<dd>
-<p>Name of ordering attribute</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>The <code>create_projection(PNAME, ...)</code> function does the following:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Creates a projection table with specified name and attributes.</p>
-</li>
-<li>
-<p>Creates <code>PNAME_refresh()</code> functions that can be used to update the projection.</p>
-</li>
-<li>
-<p>Inserts information about the created projection into <code>OOPS_projections</code> table.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>This table is used by the optimizer to automatically substitute table with projection.</p>
-</div>
-<hr>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code><a href="#create_projection:order_by">[create_projection:order_by]</a></code> attribute is one of the OOPS projection vector columns by which data is sorted.
-The presence of such a column in the projection allows the projection to be updated incrementally.
-The generated <code>PNAME_refresh()</code> method calls the <code>populate()</code> method, selecting only rows from the original table where the <code>order_by</code> column value is greater than the maximum value of that column in the projection.
-It assumes that <code>order_by</code> is unique or at least that the refresh is done at the moment when there is a gap in the collected events.</p>
-</div>
-<div class="paragraph">
-<p>Like materialized views, <span class="productname">OOPS</span> projections are not updated automatically.
-It is the programmer&#8217;s responsibility to update them periodically.
-The most convenient way is to use the generated <code>PNAME_refresh()</code> function.
-If the <code><a href="#create_projection:order_by">[create_projection:order_by]</a></code> attribute is specified, this function will import only the new data (not present in the projection) from the original table.</p>
-</div>
-<div class="paragraph">
-<p>The main advantage of <span class="productname">OOPS</span> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
+<p>The main advantage of <span class="commercial">OOPS</span> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
 There is a configuration parameter <code>OOPS.auto_substitute_projections</code> that allows to enable such substitution.
-By default it is disabled, because <span class="productname">OOPS</span> projections may not be synchronized with the original table and a query on a projection may return different result.</p>
-</div>
-<div class="paragraph">
-<p>Currently, projections can only be substituted automatically if:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Query doesn’t contain JOINs.</p>
-</li>
-<li>
-<p>Query performs aggregation of vector (tile) columns.</p>
-</li>
-<li>
-<p>All other expressions in the target list, <code>ORDER BY</code> / <code>GROUP BY</code> clauses refer only to scalar attributes of the projection.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Example of using projections:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">create extension OOPS;
-
--- Let's create a demo table
-create table lineitem(
-    l_orderkey integer,
-    l_partkey integer,
-    l_suppkey integer,
-    l_linenumber integer,
-    l_quantity real,
-    l_extendedprice real,
-    l_discount real,
-    l_tax real,
-    l_returnflag "char",
-    l_linestatus "char",
-    l_shipdate date,
-    l_commitdate date,
-    l_receiptdate date,
-    l_shipinstruct char(25),
-    l_shipmode char(10),
-    l_comment char(44),
-    l_dummy char(1));
-
-select
-create_projection(
-    'OOPS_lineitem',
-    'lineitem',
-    array['l_shipdate','l_quantity','l_extendedprice','l_discount','l_tax'],
-    array['l_returnflag','l_linestatus']);
-
--- Enable timing to see the difference
-\timing
-
--- Copy demo table
-copy lineitem from '/mnt/data/lineitem.tbl' delimiter '|' csv;
-
--- Refresh the projections
-select OOPS_lineitem_refresh();
-
--- First let's run a query without OOPS substitution
-select
-    l_returnflag,
-    l_linestatus,
-    sum(l_quantity) as sum_qty,
-    sum(l_extendedprice) as sum_base_price,
-    sum(l_extendedprice*(1-l_discount)) as sum_disc_price,
-    sum(l_extendedprice*(1-l_discount)*(1+l_tax)) as sum_charge,
-    avg(l_quantity) as avg_qty,
-    avg(l_extendedprice) as avg_price,
-    avg(l_discount) as avg_disc,
-    count(*) as count_order
-from
-    lineitem
-where
-    l_shipdate &lt;= '1998-12-01'
-group by
-    l_returnflag,
-    l_linestatus
-order by
-    l_returnflag,
-    l_linestatus;</code></pre>
-</div>
-</div>
-<div class="openblock output">
-<div class="content">
-<div class="paragraph">
-<p>output from previous code block</p>
-</div>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">-- Now let's run the same query but with OOPS substitution set to ON
-set OOPS.auto_substitute_projections TO on;
-
-select
-    l_returnflag,
-    l_linestatus,
-    sum(l_quantity) as sum_qty,
-    sum(l_extendedprice) as sum_base_price,
-    sum(l_extendedprice*(1-l_discount)) as sum_disc_price,
-    sum(l_extendedprice*(1-l_discount)*(1+l_tax)) as sum_charge,
-    avg(l_quantity) as avg_qty,
-    avg(l_extendedprice) as avg_price,
-    avg(l_discount) as avg_disc,
-    count(*) as count_order
-from
-    lineitem
-where
-    l_shipdate &lt;= '1998-12-01'
-group by
-    l_returnflag,
-    l_linestatus
-order by
-    l_returnflag,
-    l_linestatus;</code></pre>
-</div>
-</div>
-<div class="openblock output">
-<div class="content">
-<div class="paragraph">
-<p>output from previous code block</p>
-</div>
-</div>
+By default it is disabled, because <span class="commercial">OOPS</span> projections may not be synchronized with the original table and a query on a projection may return different result.</p>
 </div>
 <style>
 .output {
   background-color: lightgrey;
   font-family: "Noto Sans Mono", monospace;
 }
-.productname {
+.commercial {
   font-weight: bold;
 }
 </style>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-27 13:27:42 +0200
+Last updated 2025-04-27 11:23:59 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
