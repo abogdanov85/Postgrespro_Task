@@ -166,6 +166,10 @@ asciidoctor -a version=2 -b docbook oops.adoc -o oops_version2.xml
 Например, на [этой странице](https://wiki.postgresql.org/wiki/Fixing_Sequences) она есть, а на [этой](https://wiki.postgresql.org/wiki/Database_Schema_Recommendations_for_an_Application) — нет.
 Понятно, что в документации open source проекта документация часто может быть неединообразной.
 
+Я также заметил, что в блоках кода в вашей документации нет всплывающей кнопки `Copy` в углу блока, которая стала уже стандартом де-факто в мире технической документации.
+Она есть на этой странице, если вы читаете ее в режиме предпросмотра Github.
+Думаю, было бы здорово добавить и ее на страницы вашей документации.
+
 Еще я пытался найти в [документации postgresql](https://www.postgresql.org/docs/13/preface.html), как у них принято записывать и оформлять в тексте команды типа "JOIN" во множественном числе - "JOINs" или "joins" или, может быть `JOIN`s, и нашел [страницу](https://www.postgresql.org/docs/13/explicit-joins.html), на которой встречается разные варианты в одинаковом контексте: "explicit JOINs" и "explicit joins".
 Я остановился на "JOINs".
 
@@ -192,5 +196,3 @@ asciidoctor -a version=2 -b docbook oops.adoc -o oops_version2.xml
 А вот [в этом разделе на другой странице](https://postgrespro.ru/docs/postgresql/13/sql-syntax-calling-funcs#SQL-SYNTAX-CALLING-FUNCS-POSITIONAL) использован третий тип оформления программных выводов — они даны в тех же блоках, что и ввод, но без пустой строки между ними.
 Мне кажется, это недоработка.
 Даже если вы не используете отдельный тип оформления для блоков вывода, то все равно их нотация должна быть однообразной.
-
-
