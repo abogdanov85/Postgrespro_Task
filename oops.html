@@ -476,7 +476,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
     order_by text default null)</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="paragraph create_projection-short-description">
 <p>Creates a projection of the given table.</p>
 </div>
 <h3 id="_parameters" class="discrete">Parameters</h3>
@@ -543,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="#create_projection:order_by">[create_projection:order_by]</a></code> attribute is one of the OOPS projection vector columns by which data is sorted.
+<p>The <code><a href="#create_projection:order_by">create_projection:order_by</a></code> attribute is one of the OOPS projection vector columns by which data is sorted.
 The presence of such a column in the projection allows the projection to be updated incrementally.
 The generated <code>PNAME_refresh()</code> method calls the <code>populate()</code> method, selecting only rows from the original table where the <code>order_by</code> column value is greater than the maximum value of that column in the projection.
 It assumes that <code>order_by</code> is unique or at least that the refresh is done at the moment when there is a gap in the collected events.</p>
@@ -552,7 +552,7 @@ It assumes that <code>order_by</code> is unique or at least that the refresh is 
 <p>Like materialized views, <span class="productname">OOPS</span> projections are not updated automatically.
 It is the programmer&#8217;s responsibility to update them periodically.
 The most convenient way is to use the generated <code>PNAME_refresh()</code> function.
-If the <code><a href="#create_projection:order_by">[create_projection:order_by]</a></code> attribute is specified, this function will import only the new data (not present in the projection) from the original table.</p>
+If the <code><a href="#create_projection:order_by">create_projection:order_by</a></code> attribute is specified, this function will import only the new data (not present in the projection) from the original table.</p>
 </div>
 <div class="paragraph">
 <p>The main advantage of <span class="productname">OOPS</span> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
@@ -692,11 +692,14 @@ order by
 .productname {
   font-weight: bold;
 }
+/*.docstring {
+  background-color: #e9e9e9;
+}*/
 </style>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-27 13:59:03 +0200
+Last updated 2025-04-27 19:03:06 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

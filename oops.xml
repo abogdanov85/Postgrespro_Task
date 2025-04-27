@@ -27,9 +27,10 @@
     vector_columns text[],
     scalar_columns text[] default null,
     order_by text default null)</programlisting>
-<simpara>Creates a projection of the given table.</simpara>
+<simpara role="create_projection-short-description">Creates a projection of the given table.</simpara>
 <bridgehead xml:id="_parameters" renderas="sect2">Parameters</bridgehead>
 <variablelist xml:id="create_projection:projection_name">
+<title>create_projection:projection_name</title>
 <varlistentry>
 <term><literal>projection_name</literal> <literal>::text</literal> </term>
 <listitem>
@@ -38,6 +39,7 @@
 </varlistentry>
 </variablelist>
 <variablelist xml:id="create_projection:source_table">
+<title>create_projection:source_table</title>
 <varlistentry>
 <term><literal>source_table</literal> <literal>::regclass</literal> </term>
 <listitem>
@@ -46,6 +48,7 @@
 </varlistentry>
 </variablelist>
 <variablelist xml:id="create_projection:vector_columns">
+<title>create_projection:vector_columns</title>
 <varlistentry>
 <term><literal>vector_columns</literal> <literal>::text[]</literal> </term>
 <listitem>
@@ -54,6 +57,7 @@
 </varlistentry>
 </variablelist>
 <variablelist xml:id="create_projection:scalar_columns">
+<title>create_projection:scalar_columns</title>
 <varlistentry>
 <term><literal>scalar_columns</literal> <literal>::text[]</literal> </term>
 <listitem>
@@ -62,6 +66,7 @@
 </varlistentry>
 </variablelist>
 <variablelist xml:id="create_projection:order_by">
+<title>create_projection:order_by</title>
 <varlistentry>
 <term><literal>order_by</literal> <literal>::text</literal> optional</term>
 <listitem>

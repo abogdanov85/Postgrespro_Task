@@ -1,20 +1,24 @@
 # Пояснения к выполненному заданию
 
-Я сделал исходник статьи на Asciidoc и сгенерировал из него DocBook, а также страницу html.
+Я сделал исходник статьи на Asciidoc и сгенерировал из него DocBook и страницу html.
 Чтобы увидеть результат, можно просто скачать страницу `oops.html` и открыть ее в браузере.
 
 Чтобы собрать страницу из исходников, нужно клонировать проект и запустить asciidoctor с дефолтными настройками:
 
 ```sh
 git clone https://github.com/abogdanov85/Postgrespro_Task.git
+cd Postgrespro_Task
 asciidoctor oops.adoc
 ```
+(Должен быть установлен asciidoctor и highlight.js.)
 
 Чтобы получить DocBook, нужно запустить asciidoctor в режиме бэкенда DocBook:
 
 ```sh
 asciidoctor -b docbook oops.adoc
 ```
+
+Предпросмотр файлов `.adoc` на Github полноценно не работает, так как у них не поддерживаются выражения `include` и некоторые другие объекты Asciidoc.
 
 ## Описание файлов проекта:
 * `oops.adoc` — исходный файл статьи
