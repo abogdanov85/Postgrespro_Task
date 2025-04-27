@@ -16,11 +16,8 @@ create_projection(
     order_by text default null)
 ----
 
-// Краткое описание заворачиваем в тэг, чтобы его можно было использовать в других местах, 
-// например в сниппетах в результатах поиска
-// tag::short-description[]
+// Короткое описание в начале
 Creates a projection of the given table.
-// end::short-description[]
 
 // Заголовок, не входящий в структуру документа, 
 // так как этот докстринг может быть использован на разных страницах в разных местах
@@ -61,6 +58,7 @@ include::../templates/parameter_definition.adoc[]
 :parameter_description: Name of ordering attribute
 include::../templates/parameter_definition.adoc[]
 
+// Полное описание после перечисления параметров
 The `+create_projection(PNAME, ...)+` function does the following:
 
 [arabic]

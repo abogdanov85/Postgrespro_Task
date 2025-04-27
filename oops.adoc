@@ -8,12 +8,8 @@ Alexey Bogdanov
 :highlightjs-theme: paraiso-light
 
 
-// Краткое описание заворачиваем в тэг, чтобы его можно было использовать в других местах, 
-// например в сниппетах в результатах поиска
-// tag::short-description[]
 // Здесь хорошо бы дать расшифровку аббревиатуры OOPS в скобках, но мне не удалось ее найти
 The [.productname]#OOPS# provides some functions that simplify the creation and use of projections.
-// end::short-description[]
 
 // Предположим, что описанный функционал появится начиная с версии 2
 // В таком случае данный фрагмент показываем только, если версия меньше 2
