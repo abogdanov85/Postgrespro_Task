@@ -1,0 +1,4 @@
+// Словарь для продуктовых названий (и других выражений)
+// Здесь приходится делать pass, чтобы маркеры Asciidoc заменялись в значениях атрибутов
+:oops: pass:quotes[[.productname]#OOPS#]
+:sql: pass:quotes[[.productname]#SQL#]

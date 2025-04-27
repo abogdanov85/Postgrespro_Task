@@ -13,7 +13,7 @@
 </author>
 <authorinitials>AB</authorinitials>
 </info>
-<simpara>The <phrase role="productname">OOPS</phrase> provides some functions that simplify the creation and use of projections.</simpara>
+<simpara>The <phrase role="productname">OOPS</phrase> module provides some functions that simplify the creation and use of projections.</simpara>
 <simpara>In the future it may be added to the <phrase role="productname">SQL</phrase> grammar, so that it is possible to write:</simpara>
 <programlisting language="sql" linenumbering="unnumbered">CREATE PROJECTION xxx OF TABLE yyy(column1, column2, ...) GROUP BY (column1, column2, ...)</programlisting>
 <simpara>But for now it can be done using function:</simpara>
@@ -29,8 +29,7 @@
     order_by text default null)</programlisting>
 <simpara role="create_projection-short-description">Creates a projection of the given table.</simpara>
 <bridgehead xml:id="_parameters" renderas="sect2">Parameters</bridgehead>
-<variablelist xml:id="create_projection:projection_name">
-<title>create_projection:projection_name</title>
+<variablelist xml:id="create_projection:projection_name" xreflabel="create_projection:projection_name">
 <varlistentry>
 <term><literal>projection_name</literal> <literal>::text</literal> </term>
 <listitem>
@@ -38,8 +37,7 @@
 </listitem>
 </varlistentry>
 </variablelist>
-<variablelist xml:id="create_projection:source_table">
-<title>create_projection:source_table</title>
+<variablelist xml:id="create_projection:source_table" xreflabel="create_projection:source_table">
 <varlistentry>
 <term><literal>source_table</literal> <literal>::regclass</literal> </term>
 <listitem>
@@ -47,8 +45,7 @@
 </listitem>
 </varlistentry>
 </variablelist>
-<variablelist xml:id="create_projection:vector_columns">
-<title>create_projection:vector_columns</title>
+<variablelist xml:id="create_projection:vector_columns" xreflabel="create_projection:vector_columns">
 <varlistentry>
 <term><literal>vector_columns</literal> <literal>::text[]</literal> </term>
 <listitem>
@@ -56,8 +53,7 @@
 </listitem>
 </varlistentry>
 </variablelist>
-<variablelist xml:id="create_projection:scalar_columns">
-<title>create_projection:scalar_columns</title>
+<variablelist xml:id="create_projection:scalar_columns" xreflabel="create_projection:scalar_columns">
 <varlistentry>
 <term><literal>scalar_columns</literal> <literal>::text[]</literal> </term>
 <listitem>
@@ -65,8 +61,7 @@
 </listitem>
 </varlistentry>
 </variablelist>
-<variablelist xml:id="create_projection:order_by">
-<title>create_projection:order_by</title>
+<variablelist xml:id="create_projection:order_by" xreflabel="create_projection:order_by">
 <varlistentry>
 <term><literal>order_by</literal> <literal>::text</literal> optional</term>
 <listitem>
@@ -207,5 +202,8 @@ order by
 .productname {
   font-weight: bold;
 }
+/*.docstring {
+  background-color: #e9e9e9;
+}*/
 </style>
 </article>
