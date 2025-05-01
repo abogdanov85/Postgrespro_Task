@@ -39,13 +39,13 @@ include::../templates/parameter_definition.adoc[]
 :parameter_name: source_table
 :parameter_value: regclass
 :parameter_is_optional:
-:parameter_description: Existing [.commercial]#Postgres# table to be substituted by projection
+:parameter_description: Existing {postgres} table to be substituted by projection
 include::../templates/parameter_definition.adoc[]
 
 :parameter_name: vector_columns
 :parameter_value: text[]
 :parameter_is_optional:
-:parameter_description: Array of column names which should be stores as [.commercial]#OOPS# tiles
+:parameter_description: Array of column names which should be stores as {oops} tiles
 include::../templates/parameter_definition.adoc[]
 
 // Судя по наличию default параметр scalar_columns тоже опциональный? Тогда нужно будет добавить здесь optional

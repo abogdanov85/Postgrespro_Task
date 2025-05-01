@@ -492,7 +492,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <dl>
 <dt class="hdlist1"><code>source_table</code> <code>::regclass</code> </dt>
 <dd>
-<p>Existing <span class="commercial">Postgres</span> table to be substituted by projection</p>
+<p>Existing <span class="productname">Postgres</span> table to be substituted by projection</p>
 </dd>
 </dl>
 </div>
@@ -500,7 +500,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <dl>
 <dt class="hdlist1"><code>vector_columns</code> <code>::text[]</code> </dt>
 <dd>
-<p>Array of column names which should be stores as <span class="commercial">OOPS</span> tiles</p>
+<p>Array of column names which should be stores as <span class="productname">OOPS</span> tiles</p>
 </dd>
 </dl>
 </div>
@@ -543,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph">
-<p>The <code><a href="#create_projection:order_by">create_projection:order_by</a></code> attribute is one of the OOPS projection vector columns by which data is sorted.
+<p>The <code><a href="#create_projection:order_by">create_projection:order_by</a></code> attribute is one of the <span class="productname">OOPS</span> projection vector columns by which data is sorted.
 The presence of such a column in the projection allows the projection to be updated incrementally.
 The generated <code>PNAME_refresh()</code> method calls the <code>populate()</code> method, selecting only rows from the original table where the <code>order_by</code> column value is greater than the maximum value of that column in the projection.
 It assumes that <code>order_by</code> is unique or at least that the refresh is done at the moment when there is a gap in the collected events.</p>
@@ -699,7 +699,7 @@ order by
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-04-27 21:24:21 +0200
+Last updated 2025-05-01 18:40:01 +0200
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

@@ -4,7 +4,7 @@
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
 <title>OOPS projections and automatic table substitution</title>
-<date>2025-04-27</date>
+<date>2025-05-01</date>
 <author>
 <personname>
 <firstname>Alexey</firstname>
@@ -14,7 +14,7 @@
 <authorinitials>AB</authorinitials>
 </info>
 <simpara>The <phrase role="productname">OOPS</phrase> module provides some functions that simplify the creation and use of projections.</simpara>
-<simpara>To use OOPS, you can execute this code:</simpara>
+<simpara>To use <phrase role="productname">OOPS</phrase>, you can execute this code:</simpara>
 <programlisting language="sql" linenumbering="unnumbered">CREATE PROJECTION xxx OF TABLE yyy(column1, column2, ...) GROUP BY (column1, column2, ...)</programlisting>
 <simpara>The main advantage of <phrase role="productname">OOPS</phrase> projection mechanism is that it allows to automatically substitute queries on original tables with projections.
 There is a configuration parameter <literal>OOPS.auto_substitute_projections</literal> that allows to enable such substitution.
